@@ -11,6 +11,7 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
+#          dotnix-core
           ./configuration.nix
         ];
       };
