@@ -4,7 +4,7 @@
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
   inputs.dotnix-core.url = "github:sporyon/dotnix-core";
 
-  outputs = { nixpkgs, disko, dotnix-core, ... }:
+  outputs = { self, nixpkgs, disko, dotnix-core, ... }:
     {
       # tested with 2GB/2CPU droplet, 1GB droplets do not have enough RAM for kexec
       nixosConfigurations.dotnix-infra = nixpkgs.lib.nixosSystem {
