@@ -3,7 +3,7 @@
     disk = {
       one = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
@@ -31,7 +31,7 @@
       };
       two = {
         type = "disk";
-        device = "/dev/sdb";
+        device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {

@@ -2,7 +2,7 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.dotnix.url = "github:sporyon/dotnix-core";
+  inputs.dotnix-core.url = "github:sporyon/dotnix-core";
 
   outputs = { nixpkgs, disko, dotnix-core, ... }:
     {
