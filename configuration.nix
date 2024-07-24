@@ -1,4 +1,4 @@
-{ modulesPath, config, lib, pkgs, ... }: {
+{ inputs, modulesPath, config, lib, pkgs, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -12,23 +12,20 @@
   };
   services.openssh.enable = true;
 
-  environment.systemPackages = map lib.lowPrio [
+  environment.systemPackages = [
+    config.dotnix.polkadot-validator.package
     pkgs.curl
     pkgs.gitMinimal
   ];
 
   # Validator configuration.
   dotnix.polkadot-validator.enable = true;
-  dotnix.polkadot-validator.name = "alice";
-  dotnix.polkadot-validator.chain = "dev";
-  dotnix.polkadot-validator.extraArgs = [
-    "--db-storage-threshold=0"
-  ];
+  dotnix.polkadot-validator.name = "sporyon-dotnix-westend";
+  dotnix.polkadot-validator.chain = "westend";
 
-  nixpkgs.overlays = [
-      inputs.self.overlays.default
+    nixpkgs.overlays = [
+      inputs.dotnix-core.overlays.default
     ];
-  };
 
   users.users.root.openssh.authorizedKeys.keys = [
     # change this to your ssh key
