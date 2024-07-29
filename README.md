@@ -14,8 +14,10 @@ As a first step we would need to create the flake we want to deploy on server.
 1. Ensure flakes are enabled, see [NixOS-Manual](https://wiki.nixos.org/wiki/Flakes#enable-flakes)
 2. Initialize a flake:
 - You can either copy our [example](link)
-or initalise the flake manually 
+or initalise the flake manually
+ 
     nix flake init
+
 3. You also need to generate the hardware-configuration.nix file in case you are using a dedicated machine, using nixos-generate-config
 
 To get nixos-generate-config on our machine we will utilize kexec
@@ -28,7 +30,7 @@ SSH into your machine
 
 4. in case you dont know the IP ( why is this needed if one uses ssh he knows the IP )
 
-    $ ip addr
+    ip addr
 
 This will show the IP adress assigned to your network interfaces including the IP of the installer.
 
@@ -43,16 +45,19 @@ After running kexec the NixOS installer exists in the memory.
     nixos-generate-config --no-filesystems --dir /mnt
 
 7. scp the file to your local directory
+
     scp root@116.202.216.60:/mnt/hardware-configuration.nix hardware-configuration.nix
 
 8. Generate a configuration.nix like this one and add your ssh key.
 Generate a file called disk-config.nix you find examples [here](disko-doku)
 
 9. Generate the lock file.
+
     nix flake lock
 
 10. Now you can run NixOS anywhere to install your System onto the Server
 Run nixos anywhere 
+
  nix run github:nix-community/nixos-anywhere -- --flake /PATH/dotnix-infra/#dotnix-infra root@<ip address>
 
 
