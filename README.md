@@ -65,3 +65,12 @@ Rebuilding from your local machine
 Rebuilding from the server itself
 
     nixos-rebuild switch --flake <URL to your flake>
+
+Updating the System.
+Update the flake from your local machine
+
+    nix flake update
+
+Rebuild from your local machine 
+
+    nixos-rebuild switch --flake <URL to your flake> --target-host "root@<ip address>"
