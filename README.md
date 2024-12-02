@@ -1,5 +1,5 @@
 # How to deploy dotnix on Hetzner.
-This Guide documents a simple installation of a polkadot validator using dotnix and nixos anywhere on a target machine running x86_64-linux with [kexec](https://man7.org/linux/man-pages/man8/kexec.8.html) support.
+This Guide documents a simple installation of a polkadot validator using dotnix and NixOS anywhere on a target machine running x86_64-linux with [kexec](https://man7.org/linux/man-pages/man8/kexec.8.html) support.
 In our example we are installing Dotnix on a Hetzner dedicated server.
 
 ## Prerequisites
@@ -28,11 +28,12 @@ SSH into your machine
     passwd
 
 4. in case you dont know the IP
+
     ip addr
 
 This will show the IP adress assigned to your network interfaces including the IP of the installer.
 
-5. Since our machine doesnt come with an operating system we will use Kexec to load a new kernel from the currently running kernel in the rescue shell.
+5. Since our machine doesnt come with an operating system we will use kexec to load a new kernel from the currently running kernel in the rescue shell.
 After running kexec the NixOS installer exists in the memory. 
    
     curl -L https://github.com/nix-community/nixos-images/releases/download/nixos-unstable/nixos-kexec-installer-noninteractive-x86_64-linux.tar.gz | tar -xzf- -C /root
@@ -56,7 +57,7 @@ Generate a file called disk-config.nix you find examples [here](disko-doku)
 10. Now you can run NixOS anywhere to install your System onto the Server
 Run nixos anywhere 
 
- nix run github:nix-community/nixos-anywhere -- --flake /PATH/dotnix-infra/#dotnix-infra root@<ip address>
+    nix run github:nix-community/nixos-anywhere -- --flake /PATH/dotnix-infra/#dotnix-infra root@<ip address>
 
 
 Now lets say you made some changes to your flake.nix rebuilding is just as easy
