@@ -20,16 +20,14 @@ or initalise the flake manually
 
 3. You also need to generate the hardware-configuration.nix file in case you are using a dedicated machine, using nixos-generate-config
 
-To get nixos-generate-config on our machine we will utilize kexec
-
+Using kexec the Rescue system will be used as a NixOS installer.
 SSH into your machine
 
 4. set a secure root password.
 
     passwd
 
-4. in case you dont know the IP ( why is this needed if one uses ssh he knows the IP )
-
+4. in case you dont know the IP
     ip addr
 
 This will show the IP adress assigned to your network interfaces including the IP of the installer.
