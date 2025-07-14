@@ -16,6 +16,7 @@
     config.dotnix.polkadot-validator.package
     pkgs.curl
     pkgs.gitMinimal
+    pkgs.tmux
   ];
 
   # Validator configuration.
